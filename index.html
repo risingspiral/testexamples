@@ -1,0 +1,274 @@
+<!doctype html>  
+<html lang="en">
+	
+	<head>
+		<meta charset="utf-8">
+		
+		<title>Testing Examples</title>
+
+		<meta name="description" content="An easy to use CSS 3D slideshow tool for quickly creating good looking HTML presentations.">
+		<meta name="author" content="Hakim El Hattab">
+
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+		
+		<link href='http://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+		
+		<link rel="stylesheet" href="css/reset.css">
+		<link rel="stylesheet" href="css/main.css">
+		<link rel="stylesheet" href="css/print.css" type="text/css" media="print">
+
+		<link rel="stylesheet" href="lib/zenburn.css">
+		
+		<style>
+			.tight-spectrum  {
+				background-image: url("assets/images/tighter-spectrum.png");
+			}
+			.wider-spectrum {
+				background-image: url("assets/images/wider-spectrum.png");
+				-webkit-transition: background-image 2s ease;
+			}
+			.comparison {
+				text-align: left;
+			}
+			.comparison ul {
+				margin-left: 2em;
+			}
+			.comparison p {
+				margin-top: 1em;
+			}
+		</style>
+	</head>
+	
+	<body>
+		
+		<div class="reveal">
+
+			<!-- Used to fade in a background when a specific slide state is reached -->
+			<div class="state-background"></div>
+			
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides">
+				<section>
+					<h1>Testing examples</h1>
+					<h3 class="inverted">Jasmine, PHPUnit, Behat, Cucumber</h3>
+				</section>
+				
+				<section>
+					<h2>Jasmine Overview</h2>
+					
+					<ul>
+						<li><a href="http://pivotal.github.com/jasmine/" target="_full">Jasmine BDD</a></li>
+						<li>RSpec-style describe...it syntax</li>
+						<li>Large matcher library</li>
+						<li>Straight-up JavaScript</li>
+						<li>Abstracts dependencies with "spies"</li>
+						<li>Supports async operations</li>
+						<li>Extensible with plugins</li>
+					</ul>
+				</section>
+				
+				<section>
+					<h2>Jasmine Deets</h2>
+					
+					<ul>
+						<li>uses expect(value).toBe(value) style assertions</li>
+						<li>Robust matcher library: .toBe(), .toEqual(), .toMatch(expr), .toBeTruthy(), .toThrow()</li>
+						<li>Fluent .not modifier (e.g. expect(4).not.toEqual(5))</li>
+						<li>Match against type using jasmine.Any()</li>
+						<li>jQuery specific matchers provided by jasmine-jquery plugin</li>
+					</ul>
+				</section>
+				
+				<section>
+					<h2>Supports async</h2>
+					
+					<pre><code contenteditable="true" style="font-size: 18px; margin-top: 20px;">
+describe("System object", function() {
+
+	it("does behavior", function() {
+		var someVal = false;
+		runs(function() {
+			setTimeout(1000, function() {someVal = true;});
+		});
+		
+		waitsFor(function() {
+			return someVal;
+		}, "waiting for value to return true", 1010);
+	
+		runs(function() {
+			expect(someVal).toEqual(true);
+		});
+	});
+	
+});
+					</code></pre>
+				</section>
+				
+				<section>
+					<h2>Jasmine (Old way)</h2>
+					
+					<ul>
+						<li>Separate test runner and spec file</li>
+						<li>Separate VHost for running tests</li>
+						<li>Auto-generated fixtures from Zend_View .phtml</li>
+						<li>Separate file structure under tests/unit/javascript/</li>
+						<li><a href="http://64.208.137.47:15001/runners/CreativeSpec.php" target="_full">Creative Spec</a></li>
+					</ul>
+				</section>
+				
+				<section>
+					<h2>Some things to note</h2>
+					
+					<ul>
+						<li>Single spec can be isolated</li>
+						<li>$.AJAX spies can be used to isolate callbacks <a href="http://64.208.137.47:15001/runners/AutotaggerSpec.php?spec=Autotagger%20displays%20successful%20tag%20result." target="_full">Example</a></li>
+					</ul>
+				</section>
+				
+				<section>
+					<h2>Jasmine (New way)</h2>
+					
+					<ul>
+						<li>Spec files in same file structure as source files</li>
+						<li>No need to generate a test runner</li>
+						<li>Dependencies are declared through docblock comments (@bundle, @dependencies, file name)</li>
+						<li><a href="http://64.208.137.47:15000/v2/test" target="_full">New in-app test dashboard</a></li>
+					</ul>
+				</section>
+				
+				<section>
+					<h2>PHPUnit</h2>
+					
+					<ul>
+						<li>Straight port of JUnit to PHP</li>
+						<li>Has evolved over time. This is both good and bad.</li>
+						<li>Some features (mocking, bdd) feel tacked on.</li>
+					</ul>
+				</section>
+				
+				<section>
+					<h2>Behat and Mockery</h2>
+					<h3>Possible improvements to PHP testing</h3>
+					
+					<ul>
+						<li>True BDD tool</li>
+						<li>More elegant, streamlined mocking</li>
+					</ul>
+				</section>
+				
+				<section>
+					<h2>Jenkins</h2>
+					
+					<ul>
+						<li><a href="http://64.208.137.207:8080/">AppNexus Jenkins Dashboard</a></li>
+					</ul>
+				</section>
+				
+				<section>
+					<h2>PhantomJS</h2>
+					
+					<ul>
+						<li><a href="http://phantomjs.org/" target="_full">PhantomJS</a></li>
+						<li>Runs tests fast on the command line</li>
+						<li>JavaScript API for manipulating the browser (e.g. loading pages, releasing memory, listening to browser events, etc.)</li>
+						<li>Ability to unit test traditionally difficult tasks like file uploads into forms</li>
+					</ul>
+				</section>
+				
+				<section>
+					<h2>Acceptance Testing</h2>
+					
+					<ul>
+						<li><a href="http://cukes.info/" target="_full">Cucumber</a></li>
+						<li><a href="http://watir.com/" target="_full">Watir</a></li>
+						<li><a href="http://rspec.info/" target="_full">RSpec</a></li>
+					</ul>
+					
+				</section>
+				
+				<section>
+					<h2>The End</h2>
+					
+					<p>Questions / thoughts / concerns / ideas</p>
+				</section>
+				
+			</div>
+
+			<!-- The navigational controls UI -->
+			<aside class="controls">
+				<a class="left" href="#">&#x25C4;</a>
+				<a class="right" href="#">&#x25BA;</a>
+				<a class="up" href="#">&#x25B2;</a>
+				<a class="down" href="#">&#x25BC;</a>
+			</aside>
+
+			<!-- Displays presentation progress, max value changes via JS to reflect # of slides -->
+			<div class="progress"><span></span></div>
+			
+		</div>
+
+		<!-- Optional libraries for code syntax highlighting and classList support in IE9 -->
+		<script src="lib/highlight.js"></script>
+		<script src="lib/classList.js"></script>
+		
+		<script src="js/reveal.js"></script>
+		
+		<script>
+			// Parse the query string into a key/value object
+			var query = {};
+			location.search.replace( /[A-Z0-9]+?=(\w*)/gi, function(a) {
+				query[ a.split( '=' ).shift() ] = a.split( '=' ).pop();
+			} );
+
+			// Fires when a slide with data-state=customevent is activated
+			Reveal.addEventListener( 'customevent', function() {
+				alert( '"customevent" has fired' );
+			} );
+
+			// Fires each time a new slide is activated
+			Reveal.addEventListener( 'slidechanged', function( event ) {
+				// event.previousSlide, event.currentSlide, event.indexh, event.indexv
+			} );
+
+			Reveal.initialize({
+				// Display controls in the bottom right corner
+				controls: true,
+
+				// Display a presentation progress bar
+				progress: true,
+
+				// If true; each slide will be pushed to the browser history
+				history: true,
+
+				// Loops the presentation, defaults to false
+				loop: false,
+
+				// Flags if mouse wheel navigation should be enabled
+				mouseWheel: true,
+
+				// Apply a 3D roll to links on hover
+				rollingLinks: true,
+
+				// UI style
+				theme: query.theme || 'default', // default/neon
+
+				// Transition style
+				transition: query.transition || 'concave' // default/cube/page/concave/linear(2d)
+			});
+
+			hljs.initHighlightingOnLoad();
+		</script>
+		
+					<script>
+					Reveal.addEventListener( 'fragmentshown', function(e) {
+						if (e.fragment.id === 'gradient-fragment') {
+							document.getElementsByClassName('wider-spectrum')[0].style.backgroundImage = 'url("assets/images/tighter-spectrum.png")';
+						} else {
+							document.getElementsByClassName('wider-spectrum')[0].style.backgroundImage = 'url("assets/images/wider-spectrum.png")';
+						}
+					});
+ 					</script>
+
+	</body>
+</html>
